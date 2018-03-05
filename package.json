@@ -5,11 +5,18 @@
   "author": "Steven Salka <steven@ssalka.io>",
   "license": "MIT",
   "repo": "github:ssalka/coinvert",
-  "main": "index.js",
+  "main": "dist/coinvert.js",
   "scripts": {
-    "start": "node index"
+    "build": "webpack",
+    "start": "node dist/coinvert"
   },
   "dependencies": {
     "isomorphic-fetch": "^2.2.1"
+  },
+  "devDependencies": {
+    "ts-loader": "^4.0.1",
+    "typescript": "^2.7.2",
+    "webpack": "^4.1.0",
+    "webpack-cli": "^2.0.10"
   }
 }
