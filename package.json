@@ -1,0 +1,15 @@
+{
+  "name": "coinvert",
+  "version": "0.1.0",
+  "description": "Node.js CLI for quick and easy cryptocurrency conversions",
+  "author": "Steven Salka <steven@ssalka.io>",
+  "license": "MIT",
+  "repo": "github:ssalka/coinvert",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1"
+  }
+}
