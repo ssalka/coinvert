@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch';
 
 const round = (val, precision = 4) => Math.round(10 ** precision * val) / (10 ** precision);
 
-const coinvert = (amount, base, target) => fetch(`https://min-api.cryptocompare.com/data/price?fsym=${base}&tsyms=${target}`)
+export default (amount, base, target) => fetch(`https://min-api.cryptocompare.com/data/price?fsym=${base}&tsyms=${target}`)
   .then(res => res.json())
   .then(res => {
     if (!(target in res)) {
@@ -18,6 +18,3 @@ const coinvert = (amount, base, target) => fetch(`https://min-api.cryptocompare.
     );
   })
   .catch(console.error);
-
-
-coinvert(1, 'BTC', 'USD');
