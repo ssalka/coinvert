@@ -1,4 +1,4 @@
-const fetch = require('isomorphic-fetch');
+import fetch from 'isomorphic-fetch';
 
 const round = (val, precision = 4) => Math.round(10 ** precision * val) / (10 ** precision);
 
