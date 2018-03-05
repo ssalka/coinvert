@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "alwaysStrict": true,
+    "baseUrl": "./src",
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "target": "es5"
+  }
+}

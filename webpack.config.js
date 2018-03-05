@@ -1,0 +1,31 @@
+const path = require('path');
+
+const DIST = path.resolve('./dist');
+const SRC = path.resolve('./src');
+const TSCONFIG = path.resolve('./tsconfig.json');
+
+module.exports = {
+  mode: process.env.NODE_ENV,
+  devtool: 'source-map',
+  context: SRC,
+  entry: './index.ts',
+  target: 'node',
+  output: {
+    path: DIST,
+    filename: 'coinvert.js',
+    libraryTarget: 'umd'
+  },
+  module: {
+    rules: [{
+      test: /\.ts$/,
+      include: SRC,
+      loader: 'ts-loader',
+      options: {
+        configFile: TSCONFIG
+      }
+    }]
+  },
+  resolve: {
+    extensions: ['.js', '.ts']
+  }
+};
