@@ -10,11 +10,7 @@ export default (amount, base, target) => fetch(`https://min-api.cryptocompare.co
     }
 
     const conversionRate = parseFloat(res[target]);
-    const value = round(conversionRate * amount);
 
-    return (
-      console.log(`${amount} ${base} = ${value} ${target}`),
-      value
-    );
+    return round(conversionRate * amount);
   })
   .catch(console.error);
