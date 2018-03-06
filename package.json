@@ -6,6 +6,9 @@
   "license": "MIT",
   "repo": "github:ssalka/coinvert",
   "main": "dist/coinvert.js",
+  "bin": {
+    "coinvert": "./dist/coinvert"
+  },
   "scripts": {
     "build": "webpack",
     "start": "node dist/coinvert"
