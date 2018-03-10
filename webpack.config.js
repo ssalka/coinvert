@@ -1,4 +1,5 @@
 const path = require('path');
+const { BannerPlugin } = require('webpack');
 
 const DIST = path.resolve('./dist');
 const SRC = path.resolve('./src');
@@ -27,5 +28,11 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.ts']
-  }
+  },
+  plugins: [
+    new BannerPlugin({
+      banner: '#!/usr/bin/env node',
+      raw: true
+    })
+  ]
 };

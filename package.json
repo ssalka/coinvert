@@ -6,14 +6,19 @@
   "license": "MIT",
   "repo": "github:ssalka/coinvert",
   "main": "dist/coinvert.js",
+  "bin": {
+    "coinvert": "./dist/coinvert"
+  },
   "scripts": {
     "build": "webpack",
     "start": "node dist/coinvert"
   },
   "dependencies": {
+    "commander": "^2.14.1",
     "isomorphic-fetch": "^2.2.1"
   },
   "devDependencies": {
+    "@types/node": "^9.4.6",
     "ts-loader": "^4.0.1",
     "typescript": "^2.7.2",
     "webpack": "^4.1.0",
