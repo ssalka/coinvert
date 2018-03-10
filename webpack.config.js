@@ -1,5 +1,6 @@
 const path = require('path');
 const { BannerPlugin } = require('webpack');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const DIST = path.resolve('./dist');
 const SRC = path.resolve('./src');
@@ -22,7 +23,8 @@ module.exports = {
       include: SRC,
       loader: 'ts-loader',
       options: {
-        configFile: TSCONFIG
+        configFile: TSCONFIG,
+        transpileOnly: true
       }
     }]
   },
@@ -33,6 +35,10 @@ module.exports = {
     new BannerPlugin({
       banner: '#!/usr/bin/env node',
       raw: true
+    }),
+    new ForkTsCheckerWebpackPlugin({
+      tsconfig: '../tsconfig.json',
+      tslint: '../tslint.json'
     })
   ]
 };
