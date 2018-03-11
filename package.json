@@ -11,6 +11,8 @@
   },
   "scripts": {
     "build": "webpack",
+    "lint": "tslint -c tslint.json -p tsconfig.json -t stylish",
+    "lint:all": "npm run lint -- 'src/**/*.ts' 'test/**/*.ts'",
     "test": "NODE_ENV=test NODE_PATH=. jest -c jest.json --noStackTrace"
   },
   "dependencies": {
