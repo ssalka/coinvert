@@ -6,9 +6,8 @@
   "license": "MIT",
   "repo": "github:ssalka/coinvert",
   "main": "dist/coinvert.js",
-  "bin": {
-    "coinvert": "./dist/coinvert"
-  },
+  "bin": "./dist/coinvert",
+  "preferGlobal": true,
   "scripts": {
     "build": "webpack",
     "lint": "tslint -c tslint.json -p tsconfig.json -t stylish",
