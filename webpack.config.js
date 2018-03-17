@@ -42,7 +42,7 @@ module.exports = {
       tslint: '../tslint.json'
     }),
     function chownBundle() {
-      this.plugin('done', () => fs.chmodSync('dist/coinvert', '755'))
+      this.plugin('done', () => fs.chmodSync('dist/coinvert', '755'));
     }
   ]
 };
