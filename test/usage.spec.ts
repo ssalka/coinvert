@@ -1,13 +1,27 @@
-import { execSync } from 'child_process';
+import { exec } from 'child_process';
+import path from 'path';
+
+const coinvert = path.resolve('./dist/coinvert');
 
 describe('coinvert cli', () => {
-  it('converts USD to Tether', () => {
-    spyOn(console, 'log');
+  it('converts USD to Tether', done => {
+    const from = {
+      currency: 'USD',
+      amount: 1
+    };
 
-    const buffer = execSync('coinvert 1 USD to USDT');
+    const to = {
+      currency: 'USDT',
+      amount: 1
+    };
 
-    const expectedConversion = '1 USD = 1 USDT';
+    const expectedConversion = `${from.amount} ${from.currency} = ${to.amount} ${to.currency}`;
 
-    expect(buffer.toString('utf8').trim()).toBe(expectedConversion);
+    exec(`${coinvert} ${from.amount} ${from.currency} to ${to.currency}`, (error, stdout, stderr) => {
+      if (error || stderr) return done.fail();
+
+      expect(stdout.trim()).toBe(expectedConversion);
+      done();
+    });
   });
 });
