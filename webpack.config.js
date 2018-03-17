@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 const { BannerPlugin } = require('webpack');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
@@ -14,7 +15,7 @@ module.exports = {
   target: 'node',
   output: {
     path: DIST,
-    filename: 'coinvert.js',
+    filename: 'coinvert',
     libraryTarget: 'umd'
   },
   module: {
@@ -39,6 +40,9 @@ module.exports = {
     new ForkTsCheckerWebpackPlugin({
       tsconfig: '../tsconfig.json',
       tslint: '../tslint.json'
-    })
+    }),
+    function chownBundle() {
+      this.plugin('done', () => fs.chmodSync('dist/coinvert', '755'))
+    }
   ]
 };

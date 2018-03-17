@@ -5,7 +5,7 @@
   "author": "Steven Salka <steven@ssalka.io>",
   "license": "MIT",
   "repo": "github:ssalka/coinvert",
-  "main": "dist/coinvert.js",
+  "main": "dist/coinvert",
   "bin": "./dist/coinvert",
   "preferGlobal": true,
   "scripts": {
