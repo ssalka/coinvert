@@ -8,7 +8,7 @@ const SRC = path.resolve('./src');
 const TSCONFIG = path.resolve('./tsconfig.json');
 
 module.exports = {
-  mode: process.env.NODE_ENV,
+  mode: process.env.NODE_ENV.replace('test', 'development'),
   devtool: 'source-map',
   context: SRC,
   entry: './index.ts',
