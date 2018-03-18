@@ -3,9 +3,10 @@
     "alwaysStrict": true,
     "baseUrl": "./src",
     "esModuleInterop": true,
+    "lib": ["ES2016"],
     "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,
-    "target": "es5"
+    "target": "ES5"
   }
 }
