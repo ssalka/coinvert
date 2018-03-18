@@ -1,27 +1,28 @@
 import coinvert from 'coinvert';
+import { ICurrencyAmount } from 'interfaces';
 
 describe('coinvert api', () => {
   it('converts USD to Tether', async () => {
-    const from = {
-      currency: 'USD',
-      amount: 1
+    const from: ICurrencyAmount = {
+      code: 'USD',
+      value: 1
     };
 
-    const to = {
-      currency: 'USDT',
-      amount: 1
+    const to: ICurrencyAmount = {
+      code: 'USDT',
+      value: 1
     };
 
-    const result = await coinvert(from.amount, from.currency, to.currency);
+    const result = await coinvert(from.value, from.code, to.code);
 
-    expect(result).toBeCloseTo(to.amount, 1);
+    expect(result).toBeCloseTo(to.value, 1);
   });
 
   it('throws an error when given an unrecognized symbol', () => {
-    const fakeSymbol = 'NOTACOIN';
+    const fakeCurrencyCode = 'NOTACOIN';
 
-    coinvert(1, 'BTC', fakeSymbol).catch(err => {
-      expect(err).toBe(`Unable to convert to target currency ${fakeSymbol}`);
+    coinvert(1, 'BTC', fakeCurrencyCode).catch(err => {
+      expect(err).toBe(`Unable to convert to target currency ${fakeCurrencyCode}`);
     });
   });
 });

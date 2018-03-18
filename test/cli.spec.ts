@@ -2,12 +2,9 @@ import { exec } from 'child_process';
 import { round } from 'lodash';
 import path from 'path';
 
-const coinvert = path.resolve('./dist/coinvert');
+import { ICurrencyAmount } from 'interfaces';
 
-interface ICurrencyAmount {
-  code: string;
-  value: number;
-}
+const coinvert = path.resolve('./dist/coinvert');
 
 function verifyConversion(from: ICurrencyAmount, to: ICurrencyAmount, conversion: string): boolean {
   return new RegExp(`${from.value} ${from.code} = ${round(to.value)}\d{0,2} ${to.code}`).test(conversion);
