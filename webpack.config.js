@@ -1,19 +1,21 @@
+const fs = require('fs');
 const path = require('path');
 const { BannerPlugin } = require('webpack');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const DIST = path.resolve('./dist');
 const SRC = path.resolve('./src');
 const TSCONFIG = path.resolve('./tsconfig.json');
 
 module.exports = {
-  mode: process.env.NODE_ENV,
+  mode: process.env.NODE_ENV.replace('test', 'development'),
   devtool: 'source-map',
   context: SRC,
   entry: './index.ts',
   target: 'node',
   output: {
     path: DIST,
-    filename: 'coinvert.js',
+    filename: 'coinvert',
     libraryTarget: 'umd'
   },
   module: {
@@ -22,7 +24,8 @@ module.exports = {
       include: SRC,
       loader: 'ts-loader',
       options: {
-        configFile: TSCONFIG
+        configFile: TSCONFIG,
+        transpileOnly: true
       }
     }]
   },
@@ -33,6 +36,13 @@ module.exports = {
     new BannerPlugin({
       banner: '#!/usr/bin/env node',
       raw: true
-    })
+    }),
+    new ForkTsCheckerWebpackPlugin({
+      tsconfig: '../tsconfig.json',
+      tslint: '../tslint.json'
+    }),
+    function chownBundle() {
+      this.plugin('done', () => fs.chmodSync('dist/coinvert', '755'));
+    }
   ]
 };

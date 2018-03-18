@@ -5,21 +5,30 @@
   "author": "Steven Salka <steven@ssalka.io>",
   "license": "MIT",
   "repo": "github:ssalka/coinvert",
-  "main": "dist/coinvert.js",
-  "bin": {
-    "coinvert": "./dist/coinvert"
-  },
+  "main": "dist/coinvert",
+  "bin": "./dist/coinvert",
+  "preferGlobal": true,
   "scripts": {
     "build": "webpack",
-    "start": "node dist/coinvert"
+    "lint": "tslint -c tslint.json -p tsconfig.json -t stylish",
+    "lint:all": "npm run lint -- 'src/**/*.ts' 'test/**/*.ts'",
+    "test": "NODE_ENV=test NODE_PATH=. jest -c jest.json --noStackTrace"
   },
   "dependencies": {
     "commander": "^2.14.1",
-    "isomorphic-fetch": "^2.2.1"
+    "isomorphic-fetch": "^2.2.1",
+    "lodash": "^4.17.5"
   },
   "devDependencies": {
+    "@types/jest": "^22.2.0",
+    "@types/lodash": "^4.14.105",
     "@types/node": "^9.4.6",
+    "fork-ts-checker-webpack-plugin": "^0.4.1",
+    "jest": "^22.4.2",
+    "ts-jest": "^22.4.1",
     "ts-loader": "^4.0.1",
+    "tslint": "^5.9.1",
+    "tslint-eslint-rules": "^5.1.0",
     "typescript": "^2.7.2",
     "webpack": "^4.1.0",
     "webpack-cli": "^2.0.10"
