@@ -1,26 +1,34 @@
 import { exec } from 'child_process';
+import { round } from 'lodash';
 import path from 'path';
 
 const coinvert = path.resolve('./dist/coinvert');
 
+interface ICurrencyAmount {
+  code: string;
+  value: number;
+}
+
+function verifyConversion(from: ICurrencyAmount, to: ICurrencyAmount, conversion: string): boolean {
+  return new RegExp(`${from.value} ${from.code} = ${round(to.value)}\d{0,2} ${to.code}`).test(conversion);
+}
+
 describe('coinvert cli', () => {
   it('converts USD to Tether', done => {
     const from = {
-      currency: 'USD',
-      amount: 1
+      code: 'USD',
+      value: 1
     };
 
     const to = {
-      currency: 'USDT',
-      amount: 1
+      code: 'USDT',
+      value: 1
     };
 
-    const expectedConversion = `${from.amount} ${from.currency} = ${to.amount} ${to.currency}`;
-
-    exec(`${coinvert} ${from.amount} ${from.currency} to ${to.currency}`, (error, stdout, stderr) => {
+    exec(`${coinvert} ${from.value} ${from.code} to ${to.code}`, (error, stdout, stderr) => {
       if (error || stderr) return done.fail();
 
-      expect(stdout.trim()).toBe(expectedConversion);
+      expect(verifyConversion(from, to, stdout.trim())).toBe(true);
       done();
     });
   });

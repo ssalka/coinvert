@@ -1,6 +1,5 @@
 import fetch from 'isomorphic-fetch';
-
-const round = (val, precision = 4) => Math.round(10 ** precision * val) / (10 ** precision);
+import { round } from 'lodash';
 
 export default (amount, base, target) => fetch(`https://min-api.cryptocompare.com/data/price?fsym=${base}&tsyms=${target}`)
   .then(res => res.json())
@@ -11,6 +10,6 @@ export default (amount, base, target) => fetch(`https://min-api.cryptocompare.co
 
     const conversionRate = parseFloat(res[target]);
 
-    return round(conversionRate * amount);
+    return round(conversionRate * amount, 4);
   })
   .catch(console.error);

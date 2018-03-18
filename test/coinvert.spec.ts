@@ -14,7 +14,7 @@ describe('coinvert api', () => {
 
     const result = await coinvert(from.amount, from.currency, to.currency);
 
-    expect(result).toBe(to.amount);
+    expect(result).toBeCloseTo(to.amount, 1);
   });
 
   it('throws an error when given an unrecognized symbol', () => {
