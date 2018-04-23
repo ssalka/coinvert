@@ -1,6 +1,9 @@
 # coinvert
 Node.js CLI for quick and easy cryptocurrency conversions
 
+[![npm (scoped)](https://img.shields.io/npm/v/@ssalka/coinvert.svg)](https://www.npmjs.com/package/@ssalka/coinvert)
+[![CircleCI](https://img.shields.io/circleci/project/github/RedSparr0w/node-csgo-parser.svg)](https://circleci.com/gh/ssalka/coinvert)
+
 ## Installation
 coinvert is made available for install through NPM:
 
