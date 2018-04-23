@@ -1,5 +1,8 @@
 import program from 'commander';
 import coinvert from './coinvert';
+import { readFileSync } from 'fs';
+
+const { version } = JSON.parse(readFileSync('package.json', 'utf8'));
 
 const examples = `
   Examples:
@@ -9,6 +12,7 @@ const examples = `
 `;
 
 export default program
+  .version(version)
   .arguments('<amount> <base> <to> <target>')
   .usage('<amount> <base> <to> <target>')
   .on('--help', () => console.log(examples))
