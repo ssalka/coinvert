@@ -5,11 +5,11 @@ Node.js CLI for quick and easy cryptocurrency conversions
 coinvert is made available for install through NPM:
 
 ```
-npm install -g coinvert
+npm install -g @ssalka/coinvert
 
 // or
 
-yarn global add coinvert
+yarn global add @ssalka/coinvert
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ coinvert 1 USD to USDT
 
 ### Named Export
 ```ts
-import { coinvert } from 'coinvert';
+import { coinvert } from '@ssalka/coinvert';
 
 coinvert(1, 'USD', 'USDT').then(console.log); // 1
 ```
