@@ -12,6 +12,7 @@
     "/node_modules/"
   ],
   "testRegex": "/test/.*\\.spec\\.ts$",
+  "testURL": "http://localhost/",
   "transform": {
     ".ts": "<rootDir>/node_modules/ts-jest/preprocessor.js"
   },
